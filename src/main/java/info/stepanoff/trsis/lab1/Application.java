@@ -10,12 +10,16 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+import java.util.Collections;
+
 @ServletComponentScan
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(applicationClass, args);
+        SpringApplication application = new SpringApplication(Application.class);
+        application.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
+        application.run(args);
     }
 
     @Override
